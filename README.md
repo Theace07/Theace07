@@ -38,3 +38,19 @@ Trabajo con **React, Next.js, TypeScript y Tailwind CSS**, integro APIs y sistem
 </picture>
 
 <sub>La pantalla de título, el inventario y la terminal se dibujan con código: <code>node scripts/build-svg.mjs</code>. La serpiente la genera una GitHub Action cada día.</sub>
+
+<details>
+<summary>🗂️ <b>Bocetos anteriores</b> · cómo llegué a la pantalla de título</summary>
+<br/>
+
+**Boceto 1 · Banner editorial.** Nombre en serif con auras de color, en la línea visual del portafolio.
+
+<img src="assets/bocetos/01-banner.svg" alt="Boceto 1: banner editorial con el nombre en serif" width="100%"/>
+
+**Boceto 2 · Gráfico de contribuciones.** 53 semanas × 7 días, como el de GitHub, que dibujan `<SAMUEL/>`.
+
+<img src="assets/bocetos/02-contribuciones.svg" alt="Boceto 2: gráfico de contribuciones que dibuja SAMUEL" width="100%"/>
+
+**Versión final · Pantalla de título pixel art**, la de arriba del todo.
+
+</details>
