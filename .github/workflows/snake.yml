@@ -1,0 +1,32 @@
+name: Serpiente de contribuciones
+
+on:
+  schedule:
+    - cron: "0 5 * * *" # cada día a las 00:00 de Colombia
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Generar la serpiente con los colores del portafolio
+        uses: Platane/snk@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/snake.svg?palette=github-light&color_snake=#6d3bd6&color_dots=#ebedf0,#c9b6f2,#a27fe6,#7c4ddb,#5124ae
+            dist/snake-dark.svg?palette=github-dark&color_snake=#5fd3c4&color_dots=#121e21,#3b2a63,#5d3fa3,#8559e0,#a97bff
+
+      - name: Publicar en la rama output
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
