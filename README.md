@@ -4,7 +4,6 @@
 
 <a href="https://github.com/Theace07/portafolio"><img src="https://img.shields.io/badge/Portafolio-0b1416?style=for-the-badge&logo=nextdotjs&logoColor=a97bff" alt="Portafolio"/></a>
 <a href="https://www.linkedin.com/in/samuel-felipe-quiroz-pi%C3%B1eros-3a5327323/"><img src="https://img.shields.io/badge/LinkedIn-0b1416?style=for-the-badge&logo=linkedin&logoColor=5fd3c4" alt="LinkedIn"/></a>
-<a href="mailto:sfqp2003@gmail.com"><img src="https://img.shields.io/badge/Correo-0b1416?style=for-the-badge&logo=gmail&logoColor=a97bff" alt="Correo"/></a>
 
 <br/><br/>
 
