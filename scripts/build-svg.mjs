@@ -322,7 +322,7 @@ const hero_svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${GW}" height="
   <rect x="1" y="1" width="${GW - 2}" height="${GH - 2}" rx="13" fill="none" stroke="#22343a" stroke-width="2"/>
 </svg>
 `;
-writeFileSync("assets/hero.svg", hero_svg);
+writeFileSync("assets/title-screen.svg", hero_svg);
 
 // ───────────────────────── Terminal ─────────────────────────
 // Cada línea se «teclea» destapando un carácter cada `TYPE` segundos.
@@ -558,4 +558,4 @@ const inventory = `<svg xmlns="http://www.w3.org/2000/svg" width="${INV_W}" heig
 `;
 writeFileSync("assets/stack.svg", inventory);
 
-console.log("assets/hero.svg, assets/stack.svg y assets/terminal.svg generados");
+console.log("assets/title-screen.svg, assets/stack.svg y assets/terminal.svg generados");
