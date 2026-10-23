@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/banner.svg" alt="Samuel Felipe Quiroz Piñeros — Front-End Developer" width="100%"/>
+<img src="assets/hero.svg" alt="Un gráfico de contribuciones que dibuja <SAMUEL/> — Samuel Felipe Quiroz Piñeros, Front-End Developer" width="100%"/>
 
 <a href="https://github.com/Theace07/portafolio"><img src="https://img.shields.io/badge/Portafolio-0b1416?style=for-the-badge&logo=nextdotjs&logoColor=a97bff" alt="Portafolio"/></a>
 <a href="https://www.linkedin.com/in/samuel-felipe-quiroz-pi%C3%B1eros-3a5327323/"><img src="https://img.shields.io/badge/LinkedIn-0b1416?style=for-the-badge&logo=linkedin&logoColor=5fd3c4" alt="LinkedIn"/></a>
@@ -14,7 +14,7 @@
 
 ### § 01 · Perfil
 
-Desarrollador Front-End con más de un año creando interfaces responsivas y rápidas para clientes de Argentina y Colombia.
+Desarrollador Front-End con más de dos años creando interfaces responsivas y rápidas para clientes de Argentina y Colombia.
 Trabajo con **React, Next.js, TypeScript y Tailwind CSS**, integro APIs y sistemas backend y cuido el SEO técnico, la accesibilidad y el rendimiento.
 
 - 🔭 Lo último: dashboards con Next.js y MongoDB para administrar datos de forma centralizada.
@@ -44,4 +44,4 @@ Trabajo con **React, Next.js, TypeScript y Tailwind CSS**, integro APIs y sistem
   <img alt="Serpiente recorriendo mi gráfico de contribuciones" src="https://raw.githubusercontent.com/Theace07/Theace07/output/snake.svg"/>
 </picture>
 
-<sub>Los SVG del banner y la terminal se generan con <code>node scripts/build-svg.mjs</code>; la serpiente, con una GitHub Action cada día.</sub>
+<sub>El gráfico de contribuciones y la terminal se generan con <code>node scripts/build-svg.mjs</code>; la serpiente, con una GitHub Action cada día.</sub>
