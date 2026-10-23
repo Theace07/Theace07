@@ -2,7 +2,7 @@
 
 <img src="assets/title-screen.svg" alt="Pantalla de título pixel art: Samuel Quiroz, Front-End Developer, corre por una ciudad de noche recogiendo gemas de experiencia" width="100%"/>
 
-<a href="https://github.com/Theace07/portafolio"><img src="https://img.shields.io/badge/%E2%96%B6_Portafolio-0b1416?style=for-the-badge&logo=nextdotjs&logoColor=a97bff" alt="Portafolio"/></a>
+<a href="https://samuel-quiroz.vercel.app"><img src="https://img.shields.io/badge/%E2%96%B6_Portafolio-0b1416?style=for-the-badge&logo=nextdotjs&logoColor=a97bff" alt="Portafolio"/></a>
 <a href="https://www.linkedin.com/in/samuel-felipe-quiroz-pi%C3%B1eros-3a5327323/"><img src="https://img.shields.io/badge/LinkedIn-0b1416?style=for-the-badge&logo=linkedin&logoColor=5fd3c4" alt="LinkedIn"/></a>
 
 </div>
@@ -26,7 +26,7 @@ Trabajo con **React, Next.js, TypeScript y Tailwind CSS**, integro APIs y sistem
 
 | Misión | Qué es | Stack |
 | --- | --- | --- |
-| [**Portafolio**](https://github.com/Theace07/portafolio) | Mi portafolio: tema claro/oscuro, bilingüe, fondo interactivo y un sistema de animaciones propio | Next.js · TypeScript · Tailwind |
+| [**Portafolio**](https://github.com/Theace07/portafolio) · [en vivo](https://samuel-quiroz.vercel.app) | Mi portafolio: tema claro/oscuro, bilingüe, fondo interactivo y un sistema de animaciones propio | Next.js · TypeScript · Tailwind |
 | [**Vino · BAKOS**](https://github.com/Theace07/Vino) · [demo](https://proyecto-coder-seven-virid.vercel.app) | Sitio multipágina sobre el mundo del vino | HTML5 · SCSS |
 
 ### 📈 Actividad
