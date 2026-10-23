@@ -13,67 +13,122 @@ const C = {
   aqua: "#5fd3c4",
 };
 const MONO = "ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace";
-const SERIF = "'Iowan Old Style', 'Palatino Linotype', Georgia, serif";
+const SANS = "'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif";
 
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 mkdirSync("assets", { recursive: true });
 
-// ───────────────────────── Banner ─────────────────────────
-const banner = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" role="img" aria-label="Samuel Felipe Quiroz Piñeros — Front-End Developer">
-  <defs>
-    <radialGradient id="a" cx="50%" cy="50%" r="50%">
-      <stop offset="0" stop-color="${C.accent}" stop-opacity=".45"/>
-      <stop offset="1" stop-color="${C.accent}" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="b" cx="50%" cy="50%" r="50%">
-      <stop offset="0" stop-color="${C.aqua}" stop-opacity=".28"/>
-      <stop offset="1" stop-color="${C.aqua}" stop-opacity="0"/>
-    </radialGradient>
-    <pattern id="grain" width="3" height="3" patternUnits="userSpaceOnUse">
-      <circle cx="1.5" cy="1.5" r=".5" fill="#fff" fill-opacity=".05"/>
-    </pattern>
-    <linearGradient id="rule" gradientUnits="userSpaceOnUse" x1="70" y1="0" x2="1130" y2="0">
-      <stop offset="0" stop-color="${C.aqua}"/>
-      <stop offset="1" stop-color="${C.accent}"/>
-    </linearGradient>
-    <clipPath id="frame"><rect width="1200" height="320" rx="14"/></clipPath>
-  </defs>
-  <style>
-    .rise { opacity: 0; animation: rise 1s cubic-bezier(.16,1,.3,1) forwards; }
-    .d1 { animation-delay: .15s } .d2 { animation-delay: .35s } .d3 { animation-delay: .9s }
-    @keyframes rise { from { opacity: 0; transform: translateY(14px) } to { opacity: 1; transform: none } }
-    .draw { stroke-dasharray: 1060; stroke-dashoffset: 1060; animation: draw 1.6s cubic-bezier(.77,0,.18,1) .6s forwards; }
-    @keyframes draw { to { stroke-dashoffset: 0 } }
-    .caret { animation: blink 1.1s steps(1) infinite; }
-    @keyframes blink { 50% { opacity: 0 } }
-    @media (prefers-reduced-motion: reduce) { .rise, .draw { animation: none; opacity: 1; stroke-dashoffset: 0 } }
-  </style>
-  <g clip-path="url(#frame)">
-    <rect width="1200" height="320" fill="${C.bg}"/>
-    <circle cx="180" cy="40" r="300" fill="url(#a)">
-      <animateTransform attributeName="transform" type="translate" values="0 0; 120 60; -40 110; 0 0" dur="22s" repeatCount="indefinite"/>
-    </circle>
-    <circle cx="1080" cy="300" r="320" fill="url(#b)">
-      <animateTransform attributeName="transform" type="translate" values="0 0; -140 -50; 60 -100; 0 0" dur="28s" repeatCount="indefinite"/>
-    </circle>
-    <rect width="1200" height="320" fill="url(#grain)"/>
-    <rect x=".5" y=".5" width="1199" height="319" rx="14" fill="none" stroke="${C.line}"/>
+// ─────────────────── Gráfico de contribuciones ───────────────────
+// 53 semanas × 7 días, como el de GitHub, pero las contribuciones dibujan
+// «<SAMUEL/>». Las semanas se llenan de izquierda a derecha al cargar y
+// luego un destello recorre las letras en bucle.
+const GLYPHS = {
+  "<": ["...#.", "..#..", ".#...", "#....", ".#...", "..#..", "...#."],
+  S: [".###.", "#...#", "#....", ".###.", "....#", "#...#", ".###."],
+  A: [".###.", "#...#", "#...#", "#####", "#...#", "#...#", "#...#"],
+  M: ["#...#", "##.##", "#.#.#", "#.#.#", "#...#", "#...#", "#...#"],
+  U: ["#...#", "#...#", "#...#", "#...#", "#...#", "#...#", ".###."],
+  E: ["#####", "#....", "#....", "####.", "#....", "#....", "#####"],
+  L: ["#....", "#....", "#....", "#....", "#....", "#....", "#####"],
+  "/": ["....#", "....#", "...#.", "..#..", ".#...", "#....", "#...."],
+  ">": [".#...", "..#..", "...#.", "....#", "...#.", "..#..", ".#..."],
+};
+const WORD = "<SAMUEL/>"; // 9 glifos × 5 + 8 huecos = 53 columnas: un año justo
+const COLS = 53;
+const ROWS = 7;
 
-    <g class="rise d1">
-      <line x1="70" y1="96" x2="110" y2="96" stroke="${C.accent}"/>
-      <text x="126" y="101" fill="${C.accent}" font-family="${MONO}" font-size="14" letter-spacing="2.4">FRONT-END DEVELOPER · ZIPAQUIRÁ, COLOMBIA</text>
-      <rect class="caret" x="548" y="88" width="8" height="16" fill="${C.accent}"/>
-    </g>
-    <text class="rise d2" x="66" y="190" fill="${C.fg}" font-family="${SERIF}" font-size="74" letter-spacing="-1.5">Samuel Felipe Quiroz <tspan fill="${C.accent}" font-style="italic">Piñeros</tspan></text>
-    <path class="draw" d="M70 228 H1130" stroke="url(#rule)" stroke-width="2" fill="none"/>
-    <text class="rise d3" x="70" y="268" fill="${C.muted}" font-family="${MONO}" font-size="15" letter-spacing="1">
-      <tspan fill="${C.aqua}">§</tspan> interfaces rápidas, accesibles y con detalle — React · Next.js · TypeScript · Tailwind
-    </text>
-  </g>
+// Mapa de celdas: 0 = vacía, "name" = letra, "tag" = < / >.
+const grid = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
+[...WORD].forEach((char, i) => {
+  GLYPHS[char].forEach((row, r) => {
+    [...row].forEach((bit, c) => {
+      if (bit === "#") grid[r][i * 6 + c] = "<>/".includes(char) ? "tag" : "name";
+    });
+  });
+});
+
+// Ruido de fondo determinista (siempre el mismo SVG para el mismo código).
+let seed = 7;
+const rand = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+
+// Fuera del nombre solo hay tonos verdeazulados apagados, para que las letras
+// (violeta y aqua brillantes) se lean sin esfuerzo.
+const LEVELS = ["#141d20", "#17302f", "#1c4442", "#235855"]; // menos → más
+const CELL = 12;
+const PITCH = 15;
+const GX = 64; // margen izquierdo para los días
+const GY = 104; // arriba: nombre y meses
+const graphW = COLS * PITCH - (PITCH - CELL);
+const HERO_W = GX + graphW + 40;
+const HERO_H = GY + ROWS * PITCH + 66;
+
+let cells = "";
+for (let c = 0; c < COLS; c++) {
+  for (let r = 0; r < ROWS; r++) {
+    const kind = grid[r][c];
+    const x = GX + c * PITCH;
+    const y = GY + r * PITCH;
+    // Al cargar, cada semana llega un poco después que la anterior.
+    const enter = 250 + c * 32 + r * 14;
+    if (kind) {
+      const glint = 3200 + c * 38;
+      cells += `<rect class="${kind}" x="${x}" y="${y}" width="${CELL}" height="${CELL}" rx="2.5" style="animation-delay:${enter}ms,${glint}ms"/>`;
+    } else {
+      const roll = rand();
+      const level = roll < 0.7 ? 0 : roll < 0.9 ? 1 : roll < 0.98 ? 2 : 3;
+      cells += `<rect class="bg" fill="${LEVELS[level]}" x="${x}" y="${y}" width="${CELL}" height="${CELL}" rx="2.5" style="animation-delay:${enter}ms"/>`;
+    }
+  }
+}
+
+const MONTHS = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
+const months = MONTHS.map(
+  (m, i) => `<text x="${GX + Math.round(i * 4.42) * PITCH}" y="${GY - 10}" class="lbl">${m}</text>`,
+).join("");
+const days = [
+  ["Lun", 1],
+  ["Mié", 3],
+  ["Vie", 5],
+]
+  .map(([d, r]) => `<text x="${GX - 12}" y="${GY + r * PITCH + 10}" class="lbl" text-anchor="end">${d}</text>`)
+  .join("");
+
+const legendX = GX + graphW - 5 * PITCH - 34;
+const legendY = GY + ROWS * PITCH + 18;
+const legend = [...LEVELS, C.accent]
+  .map((fill, i) => `<rect x="${legendX + i * PITCH}" y="${legendY}" width="${CELL}" height="${CELL}" rx="2.5" fill="${fill}"/>`)
+  .join("");
+
+const hero = `<svg xmlns="http://www.w3.org/2000/svg" width="${HERO_W}" height="${HERO_H}" viewBox="0 0 ${HERO_W} ${HERO_H}" role="img" aria-label="Gráfico de contribuciones que dibuja &lt;SAMUEL/&gt; — Samuel Felipe Quiroz Piñeros, Front-End Developer">
+  <style>
+    .lbl { font: 11px ${MONO}; fill: ${C.muted}; }
+    .bg, .name, .tag { transform-box: fill-box; transform-origin: center; }
+    .bg { animation: on .5s cubic-bezier(.16,1,.3,1) backwards; }
+    .name { fill: ${C.accent}; animation: on .5s cubic-bezier(.16,1,.3,1) backwards, glint-name 6s ease-in-out infinite; }
+    .tag { fill: ${C.aqua}; animation: on .5s cubic-bezier(.16,1,.3,1) backwards, glint-tag 6s ease-in-out infinite; }
+    @keyframes on { from { fill: ${LEVELS[0]}; transform: scale(.3); } }
+    @keyframes glint-name { 0%, 14%, 100% { fill: ${C.accent}; } 5% { fill: #efe6ff; } }
+    @keyframes glint-tag { 0%, 14%, 100% { fill: ${C.aqua}; } 5% { fill: #e2fffb; } }
+    @media (prefers-reduced-motion: reduce) { .bg, .name, .tag { animation: none; } }
+  </style>
+  <rect x=".5" y=".5" width="${HERO_W - 1}" height="${HERO_H - 1}" rx="14" fill="${C.bg}" stroke="${C.line}"/>
+
+  <text x="${GX}" y="44" fill="${C.fg}" font-family="${SANS}" font-size="24" font-weight="700" letter-spacing="-.5">Samuel Felipe Quiroz Piñeros</text>
+  <text x="${GX + graphW}" y="44" fill="${C.accent}" font-family="${MONO}" font-size="12" letter-spacing="1.6" text-anchor="end">FRONT-END DEVELOPER · ZIPAQUIRÁ, CO</text>
+  <text x="${GX}" y="66" class="lbl" style="font-size:12px">2+ años de commits convertidos en interfaces rápidas, accesibles y con detalle</text>
+
+  ${months}
+  ${days}
+  ${cells}
+
+  <text x="${GX}" y="${legendY + 10}" class="lbl">React · Next.js · TypeScript · Tailwind CSS</text>
+  <text x="${legendX - 8}" y="${legendY + 10}" class="lbl" text-anchor="end">Menos</text>
+  ${legend}
+  <text x="${legendX + 5 * PITCH + 3}" y="${legendY + 10}" class="lbl">Más</text>
 </svg>
 `;
-writeFileSync("assets/banner.svg", banner);
+writeFileSync("assets/hero.svg", hero);
 
 // ───────────────────────── Terminal ─────────────────────────
 // Cada línea se «teclea» destapando un carácter cada `TYPE` segundos.
@@ -147,4 +202,4 @@ ${body}  <g opacity="0">
 `;
 writeFileSync("assets/terminal.svg", terminal);
 
-console.log("assets/banner.svg y assets/terminal.svg generados");
+console.log("assets/hero.svg y assets/terminal.svg generados");
