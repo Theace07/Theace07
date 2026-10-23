@@ -1,41 +1,35 @@
 <div align="center">
 
-<img src="assets/hero.svg" alt="Un gráfico de contribuciones que dibuja <SAMUEL/> — Samuel Felipe Quiroz Piñeros, Front-End Developer" width="100%"/>
+<img src="assets/hero.svg" alt="Pantalla de título pixel art: Samuel Quiroz, Front-End Developer, corre por una ciudad de noche recogiendo gemas de experiencia" width="100%"/>
 
-<a href="https://github.com/Theace07/portafolio"><img src="https://img.shields.io/badge/Portafolio-0b1416?style=for-the-badge&logo=nextdotjs&logoColor=a97bff" alt="Portafolio"/></a>
+<a href="https://github.com/Theace07/portafolio"><img src="https://img.shields.io/badge/%E2%96%B6_Portafolio-0b1416?style=for-the-badge&logo=nextdotjs&logoColor=a97bff" alt="Portafolio"/></a>
 <a href="https://www.linkedin.com/in/samuel-felipe-quiroz-pi%C3%B1eros-3a5327323/"><img src="https://img.shields.io/badge/LinkedIn-0b1416?style=for-the-badge&logo=linkedin&logoColor=5fd3c4" alt="LinkedIn"/></a>
-
-<br/><br/>
-
-<img src="assets/terminal.svg" alt="Terminal: whoami, stack y estado" width="760"/>
 
 </div>
 
-### § 01 · Perfil
+### ▶ Jugador
 
-Desarrollador Front-End con más de dos años creando interfaces responsivas y rápidas para clientes de Argentina y Colombia.
+Hola 👋, soy **Samuel**: desarrollador Front-End con más de dos años creando interfaces responsivas y rápidas para clientes de Argentina y Colombia.
 Trabajo con **React, Next.js, TypeScript y Tailwind CSS**, integro APIs y sistemas backend y cuido el SEO técnico, la accesibilidad y el rendimiento.
 
-- 🔭 Lo último: dashboards con Next.js y MongoDB para administrar datos de forma centralizada.
-- 🧪 Trabajo con Scrum y Kanban, con code review y testing automatizado.
-- 🌎 Español nativo · Inglés B2 · Remoto desde Zipaquirá, Colombia.
+<div align="center">
+<img src="assets/terminal.svg" alt="Terminal: whoami, stack, experiencia y estado" width="760"/>
+</div>
 
-### § 02 · Stack
+### 🎒 Inventario
 
-<p align="left">
-  <img src="https://skillicons.dev/icons?i=js,ts,react,nextjs,html,css,tailwind,sass,bootstrap&theme=dark&perline=9" alt="Frontend"/>
-  <br/>
-  <img src="https://skillicons.dev/icons?i=mongodb,firebase,jest,git,github,gitlab,vercel,gcp&theme=dark&perline=9" alt="Datos, calidad y despliegue"/>
-</p>
+<div align="center">
+<img src="assets/stack.svg" alt="Inventario de tecnologías por categoría: frontend, datos, calidad, Git y despliegue, método e IA" width="100%"/>
+</div>
 
-### § 03 · Proyectos
+### 🏆 Misiones completadas
 
-| Proyecto | Qué es | Stack |
+| Misión | Qué es | Stack |
 | --- | --- | --- |
-| [**Portafolio**](https://github.com/Theace07/portafolio) | Mi portafolio: tema claro/oscuro, bilingüe y con un sistema de animaciones propio | Next.js · TypeScript · Tailwind |
+| [**Portafolio**](https://github.com/Theace07/portafolio) | Mi portafolio: tema claro/oscuro, bilingüe, fondo interactivo y un sistema de animaciones propio | Next.js · TypeScript · Tailwind |
 | [**Vino · BAKOS**](https://github.com/Theace07/Vino) · [demo](https://proyecto-coder-seven-virid.vercel.app) | Sitio multipágina sobre el mundo del vino | HTML5 · SCSS |
 
-### § 04 · Contribuciones
+### 📈 Actividad
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Theace07/Theace07/output/snake-dark.svg"/>
@@ -43,4 +37,4 @@ Trabajo con **React, Next.js, TypeScript y Tailwind CSS**, integro APIs y sistem
   <img alt="Serpiente recorriendo mi gráfico de contribuciones" src="https://raw.githubusercontent.com/Theace07/Theace07/output/snake.svg"/>
 </picture>
 
-<sub>El gráfico de contribuciones y la terminal se generan con <code>node scripts/build-svg.mjs</code>; la serpiente, con una GitHub Action cada día.</sub>
+<sub>La pantalla de título, el inventario y la terminal se dibujan con código: <code>node scripts/build-svg.mjs</code>. La serpiente la genera una GitHub Action cada día.</sub>
